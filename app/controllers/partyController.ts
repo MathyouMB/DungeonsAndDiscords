@@ -1,24 +1,17 @@
-/*
-const header = require('../header');
-const userController = require('./userController');
+import { COMMANDCHAR, PARTYINVITECOMMAND } from "../header"
+import { Message, Client } from "discord.js";
 
-module.exports = {
-    isValidInvite: isValidInvite
-};
+export class PartyController {
 
-async function isValidInvite(msg, client){ // bool
+  public isValidInvite = async (msg:Message, client:Client) => {
+
     let content = msg.content;
     let parsedContent = content.slice(content.indexOf(" ")+1,content.length);
 
-    if(parsedContent != ''+header.COMMANDCHAR+header.PARTYINVITECOMMAND){
-        let user = await client.users.find("username", parsedContent);
-        console.log(user);
-        //Look up username
-        //if username is a real person
-            //return true
-        //else
-            //return false
+    if(parsedContent != ''+COMMANDCHAR+PARTYINVITECOMMAND){
+        console.log("Validate if user exists")
     }
-
+  }
+    
 }
-*/
+

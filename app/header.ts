@@ -1,19 +1,14 @@
-
-module.exports = Object.freeze({
-    COMMANDCHAR : "!",
-    STARTCOMMAND : "start",
-    PARTYINVITECOMMAND : "invite",
-    PARTYACCEPTCOMMAND : "accept",
-    commands : [
-        "start",
-        "invite",
-        "accept"
-    ],
-    channelTypes : [
-        "nexus",
-        "realm",
-        "dungeon"
-    ]
-});
-
 export const COMMANDCHAR = "!";
+export const STARTCOMMAND = "start";
+export const PARTYINVITECOMMAND = "invite";
+export const PARTYACCEPTCOMMAND = "accept";
+export const commands = [
+    "start",
+    "invite",
+    "accept"
+];
+export const channelTypes = [
+    "nexus",
+    "realm",
+    "dungeon"
+];

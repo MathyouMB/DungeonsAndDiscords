@@ -155,6 +155,7 @@ declare enum ChannelType {
       public readonly createdTimestamp: number;
       public deleted: boolean;
       public id: Snowflake;
+      
       public type: keyof typeof ChannelType;
       public delete(reason?: string): Promise<this>;
       public fetch(): Promise<this>;
@@ -556,6 +557,7 @@ declare enum ChannelType {
       constructor(client: Client, data?: object);
       public messages: MessageManager;
       public recipient: User;
+      public name: String;
       public readonly partial: false;
       public type: 'dm';
       public fetch(): Promise<this>;

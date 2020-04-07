@@ -7,7 +7,7 @@ const channelController = new ChannelController();
 const commandController = new CommandController();
 
 client.on('ready', () => {
-  console.log(`Client is logged in as ${client.user!.tag} and ready!`);
+    console.log(`Client is logged in as ${client.user!.tag} and ready!`);
 });
 
 client.on('message', msg => {

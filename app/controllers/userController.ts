@@ -1,16 +1,9 @@
-const header = require('../header');
-const Discord = require('discord.js');
+import { COMMANDCHAR, channelTypes } from "../header"
+import { Message, Client } from "discord.js";
 
-module.exports = {
-    createUser: createUser,
-    userAccountExists: userAccountExists
-};
+export class UserController {
 
-//crud
-
-async function createUser(msg, client){ // void
-    
-    //await create db request
+  public createUser = async (msg:Message, client:Client) => {
     console.log("Create User")
 
     msg.channel.send({embed: {
@@ -45,11 +38,11 @@ async function createUser(msg, client){ // void
         }
       }
     });
+  }
+
+  public userAccountExists = async (msg:Message) => <boolean><unknown>{
+    return: true
+  }
+    
 }
 
-//other
-
-async function userAccountExists(msg){
-    //msg.author.id
-    return false;
-}
