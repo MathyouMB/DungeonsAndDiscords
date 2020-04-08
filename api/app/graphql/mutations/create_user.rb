@@ -14,8 +14,6 @@ module Mutations
           discord_id: discord_id,
           discord_username: discord_username,
           discord_discriminator: discord_discriminator,
-          max_health: 10.0,
-          max_magic: 10.0
         )
 
         raise GraphQL::ExecutionError, user.errors.full_messages.join(", ") unless user.errors.empty?
