@@ -1,13 +1,44 @@
 import { COMMANDCHAR, channelTypes } from "../header"
 import { Message, Client } from "discord.js";
+import { request } from 'graphql-request'
+import { ENDPOINT, CREATEUSER, USEREXISTS } from "../graphql"
 
 export class UserController {
 
     public createUser = async (msg:Message, client:Client) => {
 
-      console.log("Create User")
-      //msg.channel.send("My Bot's message", {files: ["https://i.imgur.com/XxxXxXX.jpg"]});
-      msg.channel.send({embed: {
+      const variables = {
+        discordId: msg.author.id,
+        discordUsername: msg.author.username,
+        discordDiscriminator: msg.author.discriminator
+      }
+
+      try {
+        
+          const data = await request(ENDPOINT, CREATEUSER, variables)
+          msg.reply('You have been registered. Type !play to join the game.');
+
+      } catch (e) {
+          msg.reply('You are already Registered');
+      }
+ 
+    }
+
+    public userAccountExists = async (msg:Message) => {
+      
+      const variables = {
+        discordId: msg.author.id
+      }
+
+      const data = await request(ENDPOINT, USEREXISTS, variables)
+
+      return data;
+    }
+    
+}
+
+  //msg.channel.send("My Bot's message", {files: ["https://i.imgur.com/XxxXxXX.jpg"]});
+      /*msg.channel.send({embed: {
           color: 3447003,
           author: {
             name: client.user.username,
@@ -40,11 +71,5 @@ export class UserController {
           }
         }
       });
-    }
-
-    public userAccountExists = async (msg:Message) => <boolean><unknown>{
-      return: true
-    }
-    
-}
+      */
 
