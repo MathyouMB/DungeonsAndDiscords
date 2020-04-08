@@ -1,0 +1,2 @@
+class Biome < ApplicationRecord
+end

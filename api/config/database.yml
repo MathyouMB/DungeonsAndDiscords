@@ -5,21 +5,25 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: 1234
+  port: 5433
 
 development:
   <<: *default
   database: api_development
   username: postgres
   password: 1234
+  port: 5433
 
 test:
   <<: *default
   database: api_test
   username: postgres
   password: 1234
+  port: 5433
 
 production:
   <<: *default
   database: api_production
   username: postgres
   password: 1234
+  port: 5433

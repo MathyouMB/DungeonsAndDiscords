@@ -20,7 +20,7 @@ client.on('message', msg => {
     if(channelController.isGameInput(msg)){
         commandController.processCommand(msg, client);
     }
-    //console.log(msg)
+    console.log(msg)
 });
 
 client.on('messageReactionAdd', (messageReaction, user) => {

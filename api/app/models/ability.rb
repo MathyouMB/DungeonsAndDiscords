@@ -1,0 +1,2 @@
+class ABility < ApplicationRecord
+end
