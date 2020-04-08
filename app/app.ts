@@ -8,12 +8,19 @@ const commandController = new CommandController();
 
 client.on('ready', () => {
     console.log(`Client is logged in as ${client.user!.tag} and ready!`);
-});
+    //console.log(client.channels);
 
+});
+/*
+client.on('channelCreate', channel => {
+    console.log(channel);
+});
+*/
 client.on('message', msg => {
     if(channelController.isGameInput(msg)){
         commandController.processCommand(msg, client);
     }
+    //console.log(msg)
 });
 
 client.on('messageReactionAdd', (messageReaction, user) => {
