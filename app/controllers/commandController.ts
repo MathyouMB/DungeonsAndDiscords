@@ -1,4 +1,4 @@
-import { COMMANDCHAR, STARTCOMMAND, PARTYINVITECOMMAND, PARTYACCEPTCOMMAND, PLAYCOMMAND, LEAVECOMMAND } from "../header"
+import { COMMANDCHAR, STARTCOMMAND, PARTYINVITECOMMAND, PARTYACCEPTCOMMAND, PLAYCOMMAND, LEAVECOMMAND, GAMESTARTCOMMAND } from "../header"
 import { Message, Client, Channel } from "discord.js"
 import { UserController } from "./userController"
 import { PartyController } from "./partyController"
@@ -46,7 +46,7 @@ export class CommandController {
                         READ_MESSAGE_HISTORY: true,
                     });
 
-                    client.channels.get(createdChannel.id).send('<@!'+msg.author.id+'> Welcome to Dungeons and Discords. Type !begin to start the game'); // ignore this error, this works fine
+                    client.channels.get(createdChannel.id).send('<@!'+msg.author.id+'> Welcome to Dungeons and Discords. Type '+COMMANDCHAR+''+GAMESTARTCOMMAND+' to start the game'); // ignore this error, this works fine
 
                     //console.log(createdChannel);
 
@@ -54,7 +54,7 @@ export class CommandController {
                     console.error(e);
                 }
             }else{
-                msg.reply("Please register first by typing !"+STARTCOMMAND+".")
+                msg.reply("Please register first by typing "+COMMANDCHAR+""+STARTCOMMAND+".")
             }
             
         }

@@ -1,4 +1,4 @@
-import { COMMANDCHAR, channelTypes } from "../header"
+import { COMMANDCHAR, PLAYCOMMAND, channelTypes } from "../header"
 import { Message, Client } from "discord.js";
 import { request } from 'graphql-request'
 import { ENDPOINT, CREATEUSER, USEREXISTS } from "../graphql"
@@ -16,7 +16,7 @@ export class UserController {
       try {
 
           const data = await request(ENDPOINT, CREATEUSER, variables)
-          msg.reply('You have been registered. Type !play to join the game.');
+          msg.reply('You have been registered. Type '+COMMANDCHAR+''+PLAYCOMMAND+' to join the game.');
 
       } catch (e) {
           msg.reply('You are already Registered');
