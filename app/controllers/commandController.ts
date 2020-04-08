@@ -13,6 +13,7 @@ const channelController = new ChannelController();
 export class CommandController {
 
     public processCommand = async (msg:Message, client:Client) => {
+       
         if(this.isStartCommand(msg)){
             userController.createUser(msg, client)
         }
@@ -31,24 +32,29 @@ export class CommandController {
 
         if(this.isPlayCommand(msg)){
             
-            msg.reply("Creating Game Channel... ");
+            let userExists = await userController.userAccountExists(msg);
+          
+            if(userExists){
+                msg.reply("Creating Game Channel... ");
+                try {
+                    
+                    let createdChannel = await channelController.createGameChannel(msg, client);
+                    
+                    createdChannel.overwritePermissions(msg.author, {
+                        VIEW_CHANNEL: true,
+                        SEND_MESSAGES: true,
+                        READ_MESSAGE_HISTORY: true,
+                    });
 
-            try {
-                
-                let createdChannel = await channelController.createGameChannel(msg, client);
-                
-                createdChannel.overwritePermissions(msg.author, {
-                    VIEW_CHANNEL: true,
-                    SEND_MESSAGES: true,
-                    READ_MESSAGE_HISTORY: true,
-                });
+                    client.channels.get(createdChannel.id).send('<@!'+msg.author.id+'> Welcome to Dungeons and Discords. Type !begin to start the game'); // ignore this error, this works fine
 
-                client.channels.get(createdChannel.id).send('<@!'+msg.author.id+'> Welcome to Dungeons and Discords. Type !begin to start the game'); // ignore this error, this works fine
+                    //console.log(createdChannel);
 
-                //console.log(createdChannel);
-
-            } catch (e) {
-                console.error(e);
+                } catch (e) {
+                    console.error(e);
+                }
+            }else{
+                msg.reply("Please register first by typing !"+STARTCOMMAND+".")
             }
             
         }

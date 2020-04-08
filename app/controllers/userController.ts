@@ -14,7 +14,7 @@ export class UserController {
       }
 
       try {
-        
+
           const data = await request(ENDPOINT, CREATEUSER, variables)
           msg.reply('You have been registered. Type !play to join the game.');
 
@@ -32,7 +32,7 @@ export class UserController {
 
       const data = await request(ENDPOINT, USEREXISTS, variables)
 
-      return data;
+      return data.userExists;
     }
     
 }
