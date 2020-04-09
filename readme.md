@@ -2,4 +2,4 @@
 
 npm run dev
 
-<img src="./uml.png"></img>
+<img src="./erd.png"></img>
