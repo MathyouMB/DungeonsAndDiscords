@@ -34,3 +34,51 @@ query userExists($discordId: String!) {
     )
 }  
 `;
+
+export const CREATEGAME =`
+mutation createGame($discordId: String!, $discordChannelId: String!) {
+    createGame(
+      discordId: $discordId,
+      discordChannelId: $discordChannelId
+    ) {
+      id
+      locationX
+      locationY
+      biome{
+        id
+        name
+      }
+    }
+  }
+  
+`
+
+export const STARTGAME = `
+mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: String!) {
+    startGameTurn(
+      locationX: $locationX,
+      locationY: $locationY,
+      discordChannelId: $discordChannelId
+    ) {
+      id
+      locationX
+      locationY
+      biome{
+        name
+      }
+      currentEnemy{
+        name
+        health
+        maxHealth
+        abilities{
+          name
+          damage
+          magicCost
+        }
+        items{
+          name
+        }
+      }
+    }
+  }
+  `

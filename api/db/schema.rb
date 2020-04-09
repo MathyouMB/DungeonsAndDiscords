@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200408212916) do
+ActiveRecord::Schema.define(version: 20200409020557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20200408212916) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "current_enemies", force: :cascade do |t|
+    t.float "health"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.bigint "enemy_id"
+    t.index ["enemy_id"], name: "index_current_enemies_on_enemy_id"
+    t.index ["game_id"], name: "index_current_enemies_on_game_id"
+  end
+
   create_table "enemies", force: :cascade do |t|
     t.string "name"
     t.float "max_health"
@@ -100,7 +110,9 @@ ActiveRecord::Schema.define(version: 20200408212916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tile_id"
+    t.bigint "user_id"
     t.index ["tile_id"], name: "index_games_on_tile_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "item_abilities", force: :cascade do |t|
@@ -140,6 +152,8 @@ ActiveRecord::Schema.define(version: 20200408212916) do
   add_foreign_key "character_items", "characters"
   add_foreign_key "character_items", "items"
   add_foreign_key "characters", "users"
+  add_foreign_key "current_enemies", "enemies"
+  add_foreign_key "current_enemies", "games"
   add_foreign_key "enemy_abilities", "abilities"
   add_foreign_key "enemy_abilities", "enemies"
   add_foreign_key "enemy_items", "enemies"
@@ -147,6 +161,7 @@ ActiveRecord::Schema.define(version: 20200408212916) do
   add_foreign_key "game_characters", "characters"
   add_foreign_key "game_characters", "games"
   add_foreign_key "games", "tiles"
+  add_foreign_key "games", "users"
   add_foreign_key "item_abilities", "abilities"
   add_foreign_key "item_abilities", "items"
   add_foreign_key "tiles", "biomes"

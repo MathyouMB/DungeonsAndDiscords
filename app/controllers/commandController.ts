@@ -62,6 +62,10 @@ export class CommandController {
         if(this.isLeaveCommand(msg)){
             msg.reply("Left current game");
         }
+
+        if(this.isGameStartCommand(msg)){
+            gameController.startGame(msg, client);
+        }
     }
 
     public isStartCommand(msg:Message): boolean
@@ -109,6 +113,16 @@ export class CommandController {
     {
     
         if(msg.content.indexOf(LEAVECOMMAND) == COMMANDCHAR.length){
+            return true;
+        }
+
+        return false;
+    }
+
+    public isGameStartCommand(msg:Message): boolean
+    {
+    
+        if(msg.content.indexOf(GAMESTARTCOMMAND) == COMMANDCHAR.length){
             return true;
         }
 
