@@ -29,6 +29,20 @@ module Mutations
           item_id: i.id
         )
 
+        i2 = Item.find_by(name: "Big Neck Chain")
+
+        CharacterItem.create(
+          character_id: c.id,
+          item_id: i2.id
+        )
+
+        i3 = Item.find_by(name: "Bong")
+
+        CharacterItem.create(
+          character_id: c.id,
+          item_id: i3.id
+        )
+
         raise GraphQL::ExecutionError, user.errors.full_messages.join(", ") unless user.errors.empty?
 
         user

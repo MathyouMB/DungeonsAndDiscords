@@ -5,13 +5,15 @@ export const PARTYACCEPTCOMMAND = "accept"; // accept party invites
 export const PLAYCOMMAND = "play";          // creates your game session, if one doesnt already exist
 export const LEAVECOMMAND = "leave";        // command for leaving a game
 export const GAMESTARTCOMMAND = "begin";           // game start command
+export const ACTIONCOMMAND = "action";           // game start command
 export const commands = [
     "start",
     "invite",
     "accept",
     "play",
     "leave",
-    "begin"
+    "begin",
+    "action",
 ];
 export const channelTypes = [
     "nexus",

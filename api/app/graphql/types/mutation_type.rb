@@ -3,5 +3,6 @@ module Types
     field :create_user, mutation: Mutations::CreateUser
     field :create_game, mutation: Mutations::CreateGame
     field :start_game_turn, mutation: Mutations::StartGameTurn
+    field :player_option, mutation: Mutations::PlayerOption
   end
 end

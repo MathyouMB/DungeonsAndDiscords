@@ -1,4 +1,4 @@
-import { COMMANDCHAR, STARTCOMMAND, PARTYINVITECOMMAND, PARTYACCEPTCOMMAND, PLAYCOMMAND, LEAVECOMMAND, GAMESTARTCOMMAND } from "../header"
+import { COMMANDCHAR, STARTCOMMAND, PARTYINVITECOMMAND, PARTYACCEPTCOMMAND, PLAYCOMMAND, LEAVECOMMAND, GAMESTARTCOMMAND, ACTIONCOMMAND } from "../header"
 import { Message, Client, Channel } from "discord.js"
 import { UserController } from "./userController"
 import { PartyController } from "./partyController"
@@ -66,6 +66,10 @@ export class CommandController {
         if(this.isGameStartCommand(msg)){
             gameController.startGame(msg, client);
         }
+
+        if(this.isActionCommand(msg)){
+            gameController.registerAction(msg, client);
+        }
     }
 
     public isStartCommand(msg:Message): boolean
@@ -123,6 +127,16 @@ export class CommandController {
     {
     
         if(msg.content.indexOf(GAMESTARTCOMMAND) == COMMANDCHAR.length){
+            return true;
+        }
+
+        return false;
+    }
+
+    public isActionCommand(msg:Message): boolean
+    {
+    
+        if(msg.content.indexOf(ACTIONCOMMAND) == COMMANDCHAR.length){
             return true;
         }
 
