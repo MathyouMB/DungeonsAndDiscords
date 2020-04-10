@@ -74,6 +74,10 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
         abilities{
           name
           damage  
+          magicCost
+        }
+        user{
+          discordId
         }
       }
       currentEnemy{

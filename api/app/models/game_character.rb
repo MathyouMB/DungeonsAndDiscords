@@ -12,6 +12,8 @@ class GameCharacter < ApplicationRecord
     has_many :items, through: :character
     has_many :abilities, through: :character
 
+    has_one :user, through: :character
+
     def max_health
         self.character.max_health
     end

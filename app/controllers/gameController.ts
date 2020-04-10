@@ -20,6 +20,8 @@ export class GameController {
       
         msg.channel.send({embed: {
           color: 3447003,
+          type: 'rich',
+          description: 'Prepare to battle!',
           title: turnData.currentEnemy.name +" appeared...",
           url: "http://linktowikidescriptingthemonsteranditsatatcked.com",
           fields: [{
@@ -29,7 +31,7 @@ export class GameController {
           ],
           files: ["https://i.imgur.com/XxxXxXX.jpg"],
           image: {
-              url:"http://i.imgur.com/yVpymuV.png"
+              url:"https://static.drips.pw/rotmg/wiki/Enemies/Ent%20God.png"
           },
           timestamp: new Date(),
           footer: {
@@ -38,6 +40,29 @@ export class GameController {
           }
         }
       });
+
+      let d = "Type **!attack** <option> to attack the enemy.\n";
+
+      for(let i=0; i<turnData.currentPlayer.abilities.length;i++){
+        d+='\n' +
+        '**['+i+']:** '+turnData.currentPlayer.abilities[i].name+' - Damage:** '+turnData.currentPlayer.abilities[i].damage+' HP**  - Mana:** '+turnData.currentPlayer.abilities[i].magicCost+' MP**\n'
+        d+='\n';
+      }
+
+      msg.channel.send("<@!"+turnData.currentPlayer.user.discordId+"> **Your Turn has Begun** ",
+        {   
+          embed: {
+            title:"Select an option:",
+            color: 3447003,
+            description: d
+          }
+      });
+
+      /*[{
+                name: "Health",
+                value: "Health: "+turnData.currentEnemy.health+"/"+turnData.currentEnemy.maxHealth
+            }]
+            */
 
     } catch (e) {
         msg.reply('Failed to start game via API');

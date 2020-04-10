@@ -9,5 +9,6 @@ module Types
       field :previousPlayer, Types::GameCharacterType, null: true
       field :items, [Types::ItemType], null: true
       field :abilities, [Types::AbilityType], null: true
+      field :user, Types::UserType, null: false
     end
 end
