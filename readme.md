@@ -6,3 +6,11 @@ Dungeons and Discords is a turn based game playable in any discord server. The p
 
 # Erd
 <img src="./erd.png"></img>
+
+# Setup
+This bot requires both the bot and api to succesfully work. There will later be a docker-compose file to initiate the setup.
+
+```
+npm run dev
+rails s
+```
