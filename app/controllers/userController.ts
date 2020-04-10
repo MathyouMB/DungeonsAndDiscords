@@ -1,44 +1,53 @@
-import { COMMANDCHAR, PLAYCOMMAND, channelTypes } from "../header"
+import { COMMANDCHAR, PLAYCOMMAND, channelTypes } from "../header";
 import { Message, Client } from "discord.js";
-import { request } from 'graphql-request'
-import { ENDPOINT, CREATEUSER, USEREXISTS } from "../graphql"
+import { request } from "graphql-request";
+import { ENDPOINT, CREATEUSER, USEREXISTS } from "../graphql";
 
 export class UserController {
+    public createUser = async (msg: Message, client: Client) => {
+        const variables = {
+            discordId: msg.author.id,
+            discordUsername: msg.author.username,
+            discordDiscriminator: msg.author.discriminator,
+        };
 
-    public createUser = async (msg:Message, client:Client) => {
+        try {
+            const data = await request(ENDPOINT, CREATEUSER, variables);
+            msg.reply(
+                "You have been registered. Type " +
+                    COMMANDCHAR +
+                    "" +
+                    PLAYCOMMAND +
+                    " to join the game."
+            );
+        } catch (e) {
+            msg.reply("You are already Registered");
+        }
+    };
 
-      const variables = {
-        discordId: msg.author.id,
-        discordUsername: msg.author.username,
-        discordDiscriminator: msg.author.discriminator
-      }
+    public userAccountExists = async (msg: Message) => {
+        const variables = {
+            discordId: msg.author.id,
+        };
 
-      try {
+        const data = await request(ENDPOINT, USEREXISTS, variables);
 
-          const data = await request(ENDPOINT, CREATEUSER, variables)
-          msg.reply('You have been registered. Type '+COMMANDCHAR+''+PLAYCOMMAND+' to join the game.');
+        return data.userExists;
+    };
 
-      } catch (e) {
-          msg.reply('You are already Registered');
-      }
- 
-    }
+    public userAccountExistsId = async (id: string) => {
+        const variables = {
+            discordId: id,
+        };
 
-    public userAccountExists = async (msg:Message) => {
-      
-      const variables = {
-        discordId: msg.author.id
-      }
+        const data = await request(ENDPOINT, USEREXISTS, variables);
 
-      const data = await request(ENDPOINT, USEREXISTS, variables)
-
-      return data.userExists;
-    }
-    
+        return data.userExists;
+    };
 }
 
-  //msg.channel.send("My Bot's message", {files: ["https://i.imgur.com/XxxXxXX.jpg"]});
-      /*msg.channel.send({embed: {
+//msg.channel.send("My Bot's message", {files: ["https://i.imgur.com/XxxXxXX.jpg"]});
+/*msg.channel.send({embed: {
           color: 3447003,
           author: {
             name: client.user.username,
@@ -72,4 +81,3 @@ export class UserController {
         }
       });
       */
-
