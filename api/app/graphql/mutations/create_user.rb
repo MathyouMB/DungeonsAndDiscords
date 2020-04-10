@@ -29,14 +29,14 @@ module Mutations
           item_id: i.id
         )
 
-        i2 = Item.find_by(name: "Big Neck Chain")
+        i2 = Item.find_by(name: "Magic Wand")
 
         CharacterItem.create(
           character_id: c.id,
           item_id: i2.id
         )
 
-        i3 = Item.find_by(name: "Bong")
+        i3 = Item.find_by(name: "Blast Spell")
 
         CharacterItem.create(
           character_id: c.id,

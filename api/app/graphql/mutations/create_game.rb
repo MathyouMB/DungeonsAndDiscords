@@ -37,8 +37,8 @@ module Mutations
             character_id: user_character.id
         )
 =end
-        character.next_player_id = character.id
-        character.previous_player_id = character.id
+        #character.next_player_id = character.id
+        #character.previous_player_id = character.id
         
         game.current_player_id = character.id  
         game.save
