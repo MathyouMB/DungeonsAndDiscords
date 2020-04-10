@@ -13,7 +13,9 @@ module Mutations
         game = Game.find_by(discord_channel_id: discord_channel_id)
 
         tile = Tile.find_by(location_x: location_x, location_y: location_y)
-
+        p(game)
+        p(discord_channel_id)
+        p(tile)
         game.tile_id = tile.id
 
         game.clearCurrentEnemy()

@@ -66,6 +66,16 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
       biome{
         name
       }
+      currentPlayer{
+        health
+        maxHealth
+        magic
+        maxMagic
+        abilities{
+          name
+          damage  
+        }
+      }
       currentEnemy{
         name
         health
@@ -81,4 +91,5 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
       }
     }
   }
+  
   `
