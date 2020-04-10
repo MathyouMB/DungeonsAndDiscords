@@ -8,9 +8,7 @@ module Types
       field :location, Types::TileType, null: false
       field :biome, Types::BiomeType, null: false
       field :currentEnemy, Types::CurrentEnemyType, null: true
-    end
-
-    def owner 
-        self.user
+      field :gameCharacters, [Types::GameCharacterType], null:true
+      field :currentPlayer, Types::GameCharacterType, null:true
     end
 end

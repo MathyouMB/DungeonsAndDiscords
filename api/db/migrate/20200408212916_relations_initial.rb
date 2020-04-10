@@ -24,7 +24,8 @@ class RelationsInitial < ActiveRecord::Migration[5.1]
 
     add_reference :games, :tile, foreign_key: true
 
-    add_reference :games, :user, foreign_key: true
+    #add_reference :games, :owner, foreign_key: true
+    add_reference :games, :owner, index: true
 
   end
 end

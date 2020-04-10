@@ -101,8 +101,12 @@ ActiveRecord::Schema.define(version: 20200409020557) do
     t.datetime "updated_at", null: false
     t.bigint "game_id"
     t.bigint "character_id"
+    t.bigint "next_player_id"
+    t.bigint "previous_player_id"
     t.index ["character_id"], name: "index_game_characters_on_character_id"
     t.index ["game_id"], name: "index_game_characters_on_game_id"
+    t.index ["next_player_id"], name: "index_game_characters_on_next_player_id"
+    t.index ["previous_player_id"], name: "index_game_characters_on_previous_player_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -110,9 +114,11 @@ ActiveRecord::Schema.define(version: 20200409020557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tile_id"
-    t.bigint "user_id"
+    t.bigint "owner_id"
+    t.bigint "current_player_id"
+    t.index ["current_player_id"], name: "index_games_on_current_player_id"
+    t.index ["owner_id"], name: "index_games_on_owner_id"
     t.index ["tile_id"], name: "index_games_on_tile_id"
-    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "item_abilities", force: :cascade do |t|
@@ -161,7 +167,6 @@ ActiveRecord::Schema.define(version: 20200409020557) do
   add_foreign_key "game_characters", "characters"
   add_foreign_key "game_characters", "games"
   add_foreign_key "games", "tiles"
-  add_foreign_key "games", "users"
   add_foreign_key "item_abilities", "abilities"
   add_foreign_key "item_abilities", "items"
   add_foreign_key "tiles", "biomes"

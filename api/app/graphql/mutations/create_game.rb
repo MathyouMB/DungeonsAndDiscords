@@ -15,9 +15,26 @@ module Mutations
 
         game = Game.create(
             discord_channel_id: discord_channel_id,
-            user_id: user.id,
+            owner_id: user.id,
             tile_id: tile.id
         )
+
+        user_character = user.characters.first
+
+        character = GameCharacter.create!(
+            health: user_character.max_health,
+            magic: user_character.max_magic,
+            game_id: game.id,
+            character_id: user_character.id
+        )
+
+        character.next_player_id = character.id
+        character.previous_player_id = character.id
+        character.save
+
+        game.current_player_id = character.id
+
+        game.save
 
         raise GraphQL::ExecutionError, game.errors.full_messages.join(", ") unless game.errors.empty?
 
