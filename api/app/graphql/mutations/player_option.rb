@@ -25,7 +25,9 @@ module Mutations
             else
                 game.current_enemy.health -= options[option].damage
                 game.current_enemy.save
-                message = "Attacked "+ game.current_enemy.name + " with " + options[option].name + " and did " + options[option].damage.to_s + " damage."
+                game.current_player = game.current_player.next_player
+                game.save
+                message = "Attacked **"+ game.current_enemy.name + "** with **" + options[option].name + "** and did **" + options[option].damage.to_s + "** damage."
             end
         else
             succesful = false
