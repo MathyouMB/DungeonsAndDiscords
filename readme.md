@@ -4,8 +4,8 @@ Dungeons and Discords is a turn based game playable in any discord server. The p
 # Screenshots
 <a href="https://gyazo.com/b44bf6b6e213e507234dafcd30c0d3aa"><img src="https://i.gyazo.com/b44bf6b6e213e507234dafcd30c0d3aa.gif" alt="Image from Gyazo" width="1018"/></a>
 
-# Erd
-<img src="./erd.png"></img>
+# Schema
+<img src="./schema.png"></img>
 
 # Setup
 This bot requires both the bot and api to succesfully work. There will later be a docker-compose file to initiate the setup.
