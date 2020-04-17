@@ -6,6 +6,7 @@ export const PLAYCOMMAND = "play";          // creates your game session, if one
 export const LEAVECOMMAND = "leave";        // command for leaving a game
 export const GAMESTARTCOMMAND = "begin";           // game start command
 export const ACTIONCOMMAND = "action";           // game start command
+export const TRAVELCOMMAND = "travel";           // game start command
 export const commands = [
     "start",
     "invite",
@@ -14,6 +15,7 @@ export const commands = [
     "leave",
     "begin",
     "action",
+    "travel"
 ];
 export const channelTypes = [
     "nexus",

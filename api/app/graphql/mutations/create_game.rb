@@ -41,7 +41,7 @@ module Mutations
         #character.next_player_id = character.id
         #character.previous_player_id = character.id
         
-        game.current_player_id = character.id  
+        #game.current_player_id = character.id  
         game.save
         character.save
 

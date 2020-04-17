@@ -28,6 +28,35 @@ export class GameController {
 
   }
 
+  public travel = async (msg:Message, client:Client) => {
+    
+    console.log(this.getTravelDirection(msg));
+
+    const variables = {
+        discordChannelId: msg.channel.id,
+        locationX: 0,
+        locationY: 0,
+    }
+
+    try {
+        const data = await request(ENDPOINT, STARTGAME, variables)
+        console.log(data.startGameTurn);
+   
+        viewController.enemyAppeared(msg,client,data.startGameTurn)
+        viewController.displayPlayerOptions(msg,client,data.startGameTurn)
+        
+    } catch (e) {
+        msg.reply('Failed to start game via API');
+    }
+
+  }
+
+  public getTravelDirection = (msg:Message) =>{
+    let content = msg.content;
+    let parsed = content.split(" ")
+    return parsed[1];
+  }
+
   public registerAction = async (msg:Message, client:Client) => {
 
     let option = this.getOptionFromMessage(msg);
@@ -52,7 +81,7 @@ export class GameController {
         if(data.playerOption.game.currentEnemy.health > 0){
           this.enemyAction(msg, client);
         }else{
-          msg.reply("pick a direction...")
+          viewController.displayDirectionPrompt(msg,client);
         }
 
       } catch (e) {

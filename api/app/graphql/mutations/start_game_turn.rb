@@ -19,7 +19,8 @@ module Mutations
         game.tile_id = tile.id
 
         game.clearCurrentEnemy()
-
+        game.current_player = game.game_characters.first
+        
         enemy = tile.biome.pick_random_enemy
 
         game.current_enemy = CurrentEnemy.create(
@@ -27,10 +28,6 @@ module Mutations
             game_id: game.id,
             enemy_id: enemy.id
         )
-
-        
-
-        #game.clearCurrentEnemy()
 
         
 

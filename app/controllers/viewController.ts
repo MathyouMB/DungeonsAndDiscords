@@ -90,6 +90,29 @@ export class ViewController {
             }
         });
   }
+
+  public displayDirectionPrompt = async(msg:Message, client:Client) =>{
+        let m = `
+        Type **!travel** <option> to pick a direction to walk. \n
+        **[0]** - North \n
+        **[1]** - South \n
+        **[2]** - East \n
+        **[3]** - West 
+        `;
+
+        msg.channel.send(
+          {   
+            embed: {
+              title:"Select a direction:",
+              color: 3447003,
+              description: m,
+              thumbnail: {
+                url: 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/compass-icon.png',
+              }
+            }
+        });
+  }
+  
     
 }
 
