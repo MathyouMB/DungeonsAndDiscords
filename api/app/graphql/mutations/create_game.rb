@@ -11,7 +11,8 @@ module Mutations
 
         user = User.find_by(discord_id: discord_id)
 
-        tile = Tile.first
+        #tile = Tile.first
+        tile = Tile.find_by(location_x: 0, location_y: 0)
 
         game = Game.create!(
             discord_channel_id: discord_channel_id,

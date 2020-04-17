@@ -49,8 +49,11 @@ export class GameController {
         if(data.playerOption.success){
           viewController.displayEnemy(msg, client, data.playerOption.game);
         }
-
-        this.enemyAction(msg, client);
+        if(data.playerOption.game.currentEnemy.health > 0){
+          this.enemyAction(msg, client);
+        }else{
+          msg.reply("pick a direction...")
+        }
 
       } catch (e) {
           msg.reply('Failed to register turn via API');
