@@ -28,6 +28,10 @@ module Mutations
                 game.current_player = game.current_player.next_player
                 game.save
                 message = "Attacked **"+ game.current_enemy.name + "** with **" + options[option].name + "** and did **" + options[option].damage.to_s + "** damage."
+
+                if game.current_enemy.health <= 0 
+                  message = message + " "+game.current_enemy.name+" was defeated."
+                end
             end
         else
             succesful = false

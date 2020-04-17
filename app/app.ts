@@ -29,4 +29,4 @@ client.on('messageReactionAdd', (messageReaction, user) => {
 });   
 
 
-client.login('Njk1ODQyNTkxMTM2Mjg0Njky.XogEDQ.9Wmd0DYTW5TVF0GQBkpgPw9TVVw');
+client.login('Njk1ODQyNTkxMTM2Mjg0Njky.XpD2DQ.AxBsvoMHfXlPGQ5Cq7SZTmuesgo');
