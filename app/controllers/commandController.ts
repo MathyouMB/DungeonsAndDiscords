@@ -72,7 +72,7 @@ export class CommandController {
         }
 
         if(this.isTravelCommand(msg)){
-            gameController.startGame(msg, client);
+            gameController.travel(msg, client);
         }
     }
 

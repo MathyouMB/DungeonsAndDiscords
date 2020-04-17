@@ -1,6 +1,6 @@
 import { Message, Client, Channel } from "discord.js";
 import { request } from 'graphql-request'
-import { ENDPOINT, STARTGAME, PLAYEROPTION, ENEMYOPTION } from "../graphql"
+import { ENDPOINT, STARTGAME, PLAYEROPTION, ENEMYOPTION,TRAVEL } from "../graphql"
 import { ViewController } from "./viewController"
 
 const viewController = new ViewController();
@@ -29,17 +29,16 @@ export class GameController {
   }
 
   public travel = async (msg:Message, client:Client) => {
-    
-    console.log(this.getTravelDirection(msg));
 
     const variables = {
+        direction: parseInt(this.getTravelDirection(msg)),
         discordChannelId: msg.channel.id,
         locationX: 0,
         locationY: 0,
     }
 
     try {
-        const data = await request(ENDPOINT, STARTGAME, variables)
+        const data = await request(ENDPOINT, TRAVEL, variables)
         console.log(data.startGameTurn);
    
         viewController.enemyAppeared(msg,client,data.startGameTurn)

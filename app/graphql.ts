@@ -98,6 +98,52 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
   
   `
 
+export const TRAVEL = `
+mutation startGameTurn($direction: Int!, $locationX: Int!, $locationY: Int!, $discordChannelId: String!) {
+    startGameTurn(
+      direction: $direction,
+      locationX: $locationX,
+      locationY: $locationY,
+      discordChannelId: $discordChannelId
+    ) {
+      id
+      locationX
+      locationY
+      biome{
+        name
+      }
+      currentPlayer{
+        health
+        maxHealth
+        magic
+        maxMagic
+        abilities{
+          name
+          damage  
+          magicCost
+        }
+        user{
+          discordId
+        }
+      }
+      currentEnemy{
+        name
+        health
+        maxHealth
+        abilities{
+          name
+          damage
+          magicCost
+        }
+        items{
+          name
+        }
+      }
+    }
+  }
+  
+  `
+
   export const PLAYEROPTION = `
   mutation playerOption($option: Int!, $discordId: String!, $discordChannelId: String!) {
     playerOption(
