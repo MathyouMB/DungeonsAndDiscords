@@ -7,6 +7,10 @@ class CurrentEnemy < ApplicationRecord
     def name
         self.enemy.name
     end
+    
+    def imgur_url
+        self.enemy.imgur_url
+    end
 
     def max_health
         self.enemy.max_health

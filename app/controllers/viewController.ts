@@ -10,7 +10,7 @@ export class ViewController {
         title: turnData.currentEnemy.name +" appeared...",
         url: "http://linktowikidescriptingthemonsteranditsatatcked.com",
         thumbnail: {
-          url: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/the-green-forest-square-bill-wakeley.jpg',
+          url: turnData.biome.imgurUrl,
         },
 
         fields: [{
@@ -20,7 +20,7 @@ export class ViewController {
         ],
         files: ["https://i.imgur.com/XxxXxXX.jpg"],
         image: {
-            url:"https://i.imgur.com/HeqWmjq.png"
+            url: turnData.currentEnemy.imgurUrl
         },
         timestamp: new Date(),
         footer: {
@@ -37,7 +37,7 @@ export class ViewController {
         type: 'rich',
         url: "http://linktowikidescriptingthemonsteranditsatatcked.com",
         thumbnail: {
-          url: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/the-green-forest-square-bill-wakeley.jpg',
+          url: turnData.biome.imgurUrl,
         },
 
         fields: [{
@@ -47,7 +47,7 @@ export class ViewController {
         ],
         files: ["https://i.imgur.com/XxxXxXX.jpg"],
         image: {
-            url:"https://i.imgur.com/HeqWmjq.png"
+            url: turnData.currentEnemy.imgurUrl
         },
         timestamp: new Date(),
         footer: {

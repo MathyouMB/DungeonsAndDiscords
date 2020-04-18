@@ -47,6 +47,7 @@ mutation createGame($discordId: String!, $discordChannelId: String!) {
       biome{
         id
         name
+        imgurUrl
       }
     }
   }
@@ -65,6 +66,7 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
       locationY
       biome{
         name
+        imgurUrl
       }
       currentPlayer{
         health
@@ -84,6 +86,7 @@ mutation startGameTurn($locationX: Int!, $locationY: Int!, $discordChannelId: St
         name
         health
         maxHealth
+        imgurUrl
         abilities{
           name
           damage
@@ -111,6 +114,7 @@ mutation startGameTurn($direction: Int!, $locationX: Int!, $locationY: Int!, $di
       locationY
       biome{
         name
+        imgurUrl
       }
       currentPlayer{
         health
@@ -130,6 +134,7 @@ mutation startGameTurn($direction: Int!, $locationX: Int!, $locationY: Int!, $di
         name
         health
         maxHealth
+        imgurUrl
         abilities{
           name
           damage
@@ -159,6 +164,7 @@ mutation startGameTurn($direction: Int!, $locationX: Int!, $locationY: Int!, $di
         locationY
         biome{
           name
+          imgurUrl
         }
         currentPlayer{
           health
@@ -177,6 +183,7 @@ mutation startGameTurn($direction: Int!, $locationX: Int!, $locationY: Int!, $di
           name
           health
           maxHealth
+          imgurUrl
           abilities{
             name
             damage
@@ -203,6 +210,7 @@ mutation enemyOption($discordChannelId: String!) {
         locationY
         biome{
           name
+          imgurUrl
         }
         currentPlayer{
           health
@@ -226,6 +234,7 @@ mutation enemyOption($discordChannelId: String!) {
           name
           health
           maxHealth
+          imgurUrl
           abilities{
             name
             damage

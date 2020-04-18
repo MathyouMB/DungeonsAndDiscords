@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20200409020557) do
 
   create_table "biomes", force: :cascade do |t|
     t.string "name"
+    t.string "imgur_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20200409020557) do
   create_table "enemies", force: :cascade do |t|
     t.string "name"
     t.float "max_health"
+    t.string "imgur_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
