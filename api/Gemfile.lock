@@ -66,11 +66,14 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     nio4r (2.5.2)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.9-x86-mingw32)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     pg (1.2.3-x86-mingw32)
     puma (3.12.4)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.7)
@@ -119,6 +122,7 @@ GEM
     websocket-extensions (0.1.4)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
